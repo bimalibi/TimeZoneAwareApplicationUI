@@ -36,6 +36,9 @@ const Register = () => {
   //   }
   // }, []);
   const onFinish = async (values: any) => {
+    const token = localStorage.getItem("auth.token");
+    console.log(token);
+
     const utcDate = values.startDateTime.utc().format();
     const payload = {
       ...values,
@@ -53,15 +56,11 @@ const Register = () => {
     let data: any = await response.json();
     if (data) {
       console.log(data);
+      navigate("/");
     }
   };
 
   const fetchData = async () => {
-    if (!token) {
-      // Handle case when token is not available
-      return;
-    }
-
     try {
       let response = await fetch(baseUrl + "/api/users", {
         method: "get",
@@ -164,7 +163,6 @@ const Register = () => {
               htmlType="submit"
               className="login-form-button"
               style={{ borderRadius: "5px", width: "6rem", marginLeft: "6rem" }}
-              onClick={handleNavigate}
             >
               Submit
             </Button>
