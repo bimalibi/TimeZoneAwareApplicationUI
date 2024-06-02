@@ -56,6 +56,7 @@ const View = () => {
       width: 200,
       render: (text: string) => <Text>{text || "-"}</Text>,
     },
+
     {
       title: "Creator DateTime",
       dataIndex: "creatorDateTime",
@@ -73,6 +74,13 @@ const View = () => {
       render: (text: string) => (
         <Text>{moment(text).format("YYYY-MM-DD HH:mm:ss A") || "-"}</Text>
       ),
+    },
+    {
+      title: "Invited User TimeZone",
+      dataIndex: "invitedUserTimeZone",
+      key: "invitedUserTimeZone",
+      width: 200,
+      render: (text: string) => <Text>{text || "-"}</Text>,
     },
   ];
 

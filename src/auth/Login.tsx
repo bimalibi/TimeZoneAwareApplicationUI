@@ -19,7 +19,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { accessToken } = useSelector((state: RootState) => state.auth);
   useEffect(() => {
-    if (accessToken) {
+    let data = localStorage.getItem("auth.token");
+    if (data) {
       navigate("/");
     }
   }, []);
@@ -99,6 +100,7 @@ const Login = () => {
             ]}
           >
             <Input
+              type="password"
               style={{ height: "40px", width: "300px" }}
               placeholder="Enter Password"
             />
